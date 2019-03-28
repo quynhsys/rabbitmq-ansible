@@ -1,5 +1,5 @@
 ---
 
 # handlers file for rabbitmq
-- name: restart rabbitmq-server
-  service: name=rabbitmq-server state=restarted enabled=yes
+- name: stop rabbitmq-server
+  service: name=rabbitmq-server state=stopped enabled=yes
