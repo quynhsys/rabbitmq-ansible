@@ -1,0 +1,8 @@
+---
+
+- name: add rabbitmq user and set privileges
+  - rabbitmq_user:
+                 user= joe
+                 password= changeme
+                 permissions= [{vhost='/', configure_priv='.*', read_priv='.*', write_priv='.*'}]
+                 state=present
