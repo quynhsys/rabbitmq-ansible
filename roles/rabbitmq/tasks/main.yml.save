@@ -1,0 +1,10 @@
+---
+
+- name: add repo
+  script: rabbit-erlang.sh
+
+- name: install elrang centos
+  command: "{{ item }}  chdir=/home/quynhnv/src/"
+  with_items:
+    - wget http://github.com/rabbitmq/erlang-rpm/releases/download/v20.1.2/erlang-20.1.2-1.el7.centos.x86_64.rpm
+    - wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.6/rabbitmq-server-3.7.6-1.el7.noarch.rpm

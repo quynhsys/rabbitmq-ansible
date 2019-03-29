@@ -24,9 +24,22 @@
 - include: service.yml
 
 - name: enable rabbitmq-server plugin
-  include_tasks: enable-rabbitmq.yml
+  include_tasks: enable-rabbitmq.yml 
 
-- name: add user
-  script: adduser.sh 
+- name: Add admin user
+  shell: rabbitmqctl add_user admin admin
+  ignore_errors: true
+
+- name: Set admin user tags
+  shell: rabbitmqctl set_user_tags admin administrator
+  ignore_errors: true
+
+- name: Set admin user permissions
+  shell: rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+  ignore_errors: true
+
+- name: Delete guest user
+  shell: rabbitmqctl delete_user guest
+  ignore_errors: true
 
 - include: config-rabbitmq.yml
